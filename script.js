@@ -43,12 +43,12 @@ const characterDetails=document.getElementById("animal-details");
 //function to display details of a character
 
 
-let character = []
+let Animal =[]
 document.addEventListener("DOMContentLoaded", function(){
-    getCharacters()
+    getAnimal()
 })
 
-function getCharacters(){
+function getAnimal(){
     fetch("http://localhost:3000/characters", {
         method: "GET",
         headers:{
@@ -56,38 +56,38 @@ function getCharacters(){
         }    
     }).then(data=>data.json())
     .then(response =>{
-        characters = [...response]
-        displayCharacters(response)
-        console.log(characters)
+        Animal = [...response]
+        displayAnimal(response)
+        console.log(Animal)
     })
 }
 //display characters on the front-end
-function displayCharacters(characters){
-    const characterbar = document.querySelector("#character-bar")
-    for(character of characters){
-        console.log(character.name)
+function displayAnimal(Animal){
+    const Animalbar = document.querySelector("#Animal-bar")
+    for(Animal of Animals){
+        console.log(Animal.name)
         const span = document.createElement("span");
-        span.innerText = character.name;
-        span.setAttribute("id",character.id)
+        span.innerText = Animal.name;
+        span.setAttribute("id",Animal.id)
         span.addEventListener("click", (event)=> {
-            displayCharacterDetails(getCharacterById(characters, parseInt(event.target.id)))
+            displayAnimalDetails(getAnimalById(Animal, parseInt(event.target.id)))
 
     })
-        characterbar.appendChild(span);
+        Animalbar.appendChild(span);
     }
 }
 
-function displayCharacterDetails (character){
+function displayAnimalDetails (Animal){
 const image = document.querySelector("#image");
 const voteButton = document.querySelector("#voteButton");
-image.src = character.image;
+image.src = Animal.image;
 
 }
 
 
-function getCharacterById (characters, id){
-    return characters.find((character)=>{
-        return character.id === id
+function getAnimalById (Animal, id){
+    return Animal.find((Animal)=>{
+        return Animal.id === id
     }
     
     )}
