@@ -41,8 +41,53 @@ const characterList=document.getElementById("animal-list");
 const characterDetails=document.getElementById("animal-details");
 
 //function to display details of a character
-function showCharacterDetails(character){
-    characterDetails.innerHTML= 
-    <h2>Animal Details</h2>
-    <img src="${character.image}"alt=""
+
+
+let character = []
+document.addEventListener("DOMContentLoaded", function(){
+    getCharacters()
+})
+
+function getCharacters(){
+    fetch("http://localhost:3000/characters", {
+        method: "GET",
+        headers:{
+            "Content-Type": "application/json"
+        }    
+    }).then(data=>data.json())
+    .then(response =>{
+        characters = [...response]
+        displayCharacters(response)
+        console.log(characters)
+    })
 }
+//display characters on the front-end
+function displayCharacters(characters){
+    const characterbar = document.querySelector("#character-bar")
+    for(character of characters){
+        console.log(character.name)
+        const span = document.createElement("span");
+        span.innerText = character.name;
+        span.setAttribute("id",character.id)
+        span.addEventListener("click", (event)=> {
+            displayCharacterDetails(getCharacterById(characters, parseInt(event.target.id)))
+
+    })
+        characterbar.appendChild(span);
+    }
+}
+
+function displayCharacterDetails (character){
+const image = document.querySelector("#image");
+const voteButton = document.querySelector("#voteButton");
+image.src = character.image;
+
+}
+
+
+function getCharacterById (characters, id){
+    return characters.find((character)=>{
+        return character.id === id
+    }
+    
+    )}
