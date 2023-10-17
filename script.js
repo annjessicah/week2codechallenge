@@ -1,4 +1,4 @@
-const characters={
+
     "characters": [
       {
         "id": 1,
@@ -31,16 +31,11 @@ const characters={
         "votes": 0
       }
     ]
-   }
    
    
    
-//variables to keep track of the selected characterand elements
-letselectedCharacter=null;
-const characterList=document.getElementById("animal-list");
-const characterDetails=document.getElementById("animal-details");
+   
 
-//function to display details of a character
 
 
 let Animal =[]
