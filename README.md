@@ -46,7 +46,7 @@ using a local API and building out the frontend for our app, Flatacuties.
 
 Run this command to get the backend started:
 
-```sh
+```sh  
 json-server --watch db.json
 ```
 
