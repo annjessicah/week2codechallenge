@@ -4,7 +4,8 @@ const characterData = () => {
 
     characters.innerHTML = '';
 //fetch the candidates info from API and display it
-let baseURL = 'http://localhost:3000/characters'
+// when you deploy:  https://my-json-server.typicode.com/annjessicah/week2codechallenge/characters
+let baseURL = 'https://my-json-server.typicode.com/annjessicah/week2codechallenge/characters'
     fetch(baseURL)
     .then(response => response.json())//translating into something thats readable
 
